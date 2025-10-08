@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "قهوه",
       title: "آمریکانو",
       price: 30000,
-      img: "https://via.placeholder.com/800x600?text=Americano",
+      img: "./img/ejcgzk.png",
       desc: "اسپرسو رقیق شده با آب داغ",
     },
     {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "قهوه",
       title: "کاپوچینو",
       price: 45000,
-      img: "https://via.placeholder.com/800x600?text=Cappuccino",
+      img: "./img/ejcgzk.png",
       desc: "کاپوچینو با کف عالی",
     },
     {
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "نوشیدنی سرد",
       title: "آیس لاته",
       price: 55000,
-      img: "https://via.placeholder.com/800x600?text=Iced+Latte",
+      img: "./img/ejcgzk.png",
       desc: "قهوه سرد با شیر",
     },
     {
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "دسر",
       title: "براونی",
       price: 40000,
-      img: "https://via.placeholder.com/800x600?text=Brownie",
+      img: "./img/ejcgzk.png",
       desc: "براونی شکلاتی دست ساز",
     },
     {
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "چای",
       title: "چای سنتی",
       price: 15000,
-      img: "https://via.placeholder.com/800x600?text=Tea",
+      img: "./img/ejcgzk.png",
       desc: "چای خوش رنگ و خوش طعم",
     },
     {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "نوشیدنی سرد",
       title: "فِرَش لیموناد",
       price: 35000,
-      img: "https://via.placeholder.com/800x600?text=Lemonade",
+      img: "./img/ejcgzk.png",
       desc: "لیموناد تازه",
     },
   ];
@@ -431,3 +431,119 @@ document.addEventListener("DOMContentLoaded", () => {
   initSwipers();
   updateCartUI();
 });
+// بهبود سوایپر برای موبایل
+function initSwipers() {
+  // category swiper
+  categorySwiper = new Swiper(".categories-swiper", {
+    slidesPerView: "auto",
+    centeredSlides: false,
+    spaceBetween: 8,
+    grabCursor: true,
+    freeMode: true,
+    breakpoints: {
+      0: {
+        spaceBetween: 6,
+      },
+      768: {
+        spaceBetween: 12,
+      }
+    }
+  });
+
+  // items swiper - تنظیمات بهتر برای موبایل
+  window.itemsSwiper = new Swiper(".mySwiper", {
+    resistanceRatio: 0.7,
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    loop: false,
+    coverflowEffect: {
+      rotate: window.innerWidth < 768 ? 10 : 20,
+      stretch: 0,
+      depth: window.innerWidth < 768 ? 80 : 160,
+      modifier: 1,
+      slideShadows: false,
+    },
+    pagination: { 
+      el: ".swiper-pagination", 
+      clickable: true,
+      dynamicBullets: true 
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      0: { 
+        slidesPerView: 1.1, 
+        centeredSlides: true,
+        coverflowEffect: {
+          rotate: 5,
+          depth: 50,
+          stretch: 0
+        }
+      },
+      400: { 
+        slidesPerView: 1.2, 
+        centeredSlides: true 
+      },
+      576: { 
+        slidesPerView: 1.4, 
+        centeredSlides: true 
+      },
+      768: { 
+        slidesPerView: 1.8,
+        coverflowEffect: {
+          rotate: 15,
+          depth: 120
+        }
+      },
+      1200: { 
+        slidesPerView: 2.2,
+        coverflowEffect: {
+          rotate: 20,
+          depth: 160
+        }
+      },
+    }
+  });
+
+  // بقیه کد بدون تغییر...
+}
+
+// بستن سایدبار با کلیک خارج
+document.addEventListener('click', (e) => {
+  const cartSidebar = q('#cartSidebar');
+  const cartBtn = q('#cartBtn');
+  
+  if (cartSidebar.classList.contains('open') && 
+      !cartSidebar.contains(e.target) && 
+      e.target !== cartBtn && 
+      !cartBtn.contains(e.target)) {
+    cartSidebar.classList.remove('open');
+  }
+});
+
+// بهبود نمایش مودال در موبایل
+function openModal(id) {
+  const item = menuData.find((i) => i.id === id);
+  if (!item) return;
+  currentModalItem = item;
+  
+  const modalImg = q("#modalImg");
+  const modalTitle = q("#modalTitle");
+  const modalDesc = q("#modalDesc");
+  const modalPrice = q("#modalPrice");
+  
+  modalImg.src = item.img;
+  modalTitle.textContent = item.title;
+  modalDesc.textContent = item.desc;
+  modalPrice.textContent = formatCurrency(item.price);
+  
+  // تنظیم alt برای accessibility
+  modalImg.alt = item.title;
+  
+  const modal = new bootstrap.Modal(q("#itemModal"));
+  modal.show();
+}

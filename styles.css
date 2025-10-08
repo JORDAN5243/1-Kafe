@@ -128,6 +128,167 @@ body {
   background: var(--brown-medium);
   border-color: var(--brown-medium);
 }
+/* مشکلات رسپانسیو - رفع */
+@media (max-width: 768px) {
+  /* هدر - بهبود نمایش در موبایل */
+  .app-header .container {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    gap: 10px;
+  }
+
+  .app-header .d-flex.align-items-center.gap-3 {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .app-header .d-flex.align-items-center.gap-2 {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  /* سوایپر دسته‌بندی - جلوگیری از overflow */
+  .categories-swiper {
+    padding: 8px 12px !important;
+    overflow: hidden !important;
+  }
+
+  .categories-swiper .swiper-slide {
+    width: 100px !important;
+    height: 100px !important;
+    margin: 0 6px !important;
+  }
+
+  /* کارت‌های محصول - ارتفاع انعطاف‌پذیر */
+  .swiper .swiper-slide {
+    height: auto !important;
+    min-height: 280px;
+  }
+
+  .swiper .swiper-slide .item-img {
+    height: 160px !important;
+  }
+
+  /* دکمه‌ها در موبایل - بزرگتر برای لمس راحت */
+  .btn,
+  .btn-sm {
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    min-height: 44px; /* برای لمس بهتر */
+  }
+
+  /* سایدبار سبد خرید - تمام صفحه در موبایل */
+  .cart-sidebar {
+    width: 100vw !important;
+    right: 0 !important;
+    top: 0 !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    transform: translateX(100%) !important;
+  }
+
+  .cart-sidebar.open {
+    transform: translateX(0) !important;
+  }
+
+  /* مودال محصول - تک ستونه در موبایل */
+  .modal-dialog.modal-lg {
+    margin: 10px !important;
+    max-width: calc(100vw - 20px) !important;
+  }
+
+  .modal-content .row.g-0 {
+    flex-direction: column !important;
+  }
+
+  .modal-content .col-md-6 {
+    width: 100% !important;
+  }
+
+  .modal-content .col-md-6:first-child {
+    height: 200px !important;
+  }
+
+  /* دکمه‌های سبد خرید در موبایل - بزرگتر */
+  #cartItems .btn-sm {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* متن‌ها در موبایل - خوانایی بهتر */
+  body {
+    font-size: 14px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: calc(1em + 0.5vw);
+  }
+}
+
+/* بهبودهای اضافی برای صفحه‌های بسیار کوچک */
+@media (max-width: 480px) {
+  .container,
+  .container-fluid {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .hero {
+    padding-bottom: 20px !important;
+  }
+
+  .categories-swiper .swiper-slide {
+    width: 90px !important;
+    height: 90px !important;
+  }
+
+  .swiper {
+    padding: 20px 0 16px !important;
+  }
+
+  /* دکمه‌های هدر در موبایل کوچک */
+  .app-header .btn {
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+  }
+
+  .logo {
+    width: 44px !important;
+    height: 44px !important;
+  }
+}
+
+/* جلوگیری از horizontal scroll */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* بهبود نمایش grid در موبایل */
+@media (max-width: 991px) {
+  #menuGrid .col-md-6 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* سوایپر آیتم‌ها - تنظیمات بهتر برای موبایل */
+@media (max-width: 576px) {
+  .swiper .swiper-slide {
+    width: 85% !important;
+    margin: 0 auto;
+  }
+}
 
 /* small screens tweaks */
 @media (max-width: 991px) {
@@ -145,34 +306,48 @@ body {
     height: calc(100vh - 70px);
   }
 }
-@media (max-width: 991px){
-  .hero .container { padding-left: 0; padding-right: 0; }
-  .categories-swiper{ padding: 8px 4px; }
-  .categories-swiper .swiper-slide { margin: 0 4px; }
+@media (max-width: 991px) {
+  .hero .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .categories-swiper {
+    padding: 8px 4px;
+  }
+  .categories-swiper .swiper-slide {
+    margin: 0 4px;
+  }
 
-  .swiper .swiper-slide{
+  .swiper .swiper-slide {
     min-height: 300px;
     height: auto;
   }
 
-  .cart-sidebar{
+  .cart-sidebar {
     width: 100%;
     top: 70px;
     height: calc(100vh - 70px);
   }
 }
 
-@media (max-width: 767px){
-  .cart-sidebar{
+@media (max-width: 767px) {
+  .cart-sidebar {
     top: 64px;
     border-radius: 0;
   }
 }
 
-@media (max-width: 575px){
-  .app-header .container { flex-wrap: wrap; text-align: center; }
-  .app-header .btn { font-size: 14px; padding: 4px 8px; }
-  .app-header .logo { width: 48px; height: 48px; }
+@media (max-width: 575px) {
+  .app-header .container {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .app-header .btn {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+  .app-header .logo {
+    width: 48px;
+    height: 48px;
+  }
 }
-
-

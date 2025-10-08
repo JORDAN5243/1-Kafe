@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>منوی کافه — نسخهٔ شبیه‌سازی با Carousel</title>
+  <title>منوی کافه — نسخهٔ شبیه‌سازی</title>
 
   <!-- Bootstrap RTL (CDN) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="./bootstrap-5.3.8-dist/css/bootstrap.rtl.min.css">
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.5/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -19,14 +19,14 @@
 
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="mobile-fix">
   <!-- Header -->
   <header class="app-header bg-dark text-light">
     <div class="container d-flex align-items-center justify-content-between py-2">
       <div class="d-flex align-items-center gap-3">
         <img src="https://via.placeholder.com/64x64?text=Logo" alt="لوگو" class="logo">
         <div>
-          <h1 class="h5 mb-0">کافه آرمون — منو</h1>
+          <h1 class="h5 mb-0">کافه — منو</h1>
           <small class="text-muted">انتخاب و سفارش آنلاین</small>
         </div>
       </div>
@@ -128,8 +128,8 @@
 
         <div class="col-lg-6">
           <h3 class="h5">اطلاعات تماس</h3>
-          <p class="mb-1"><strong>تلفن:</strong> ۰۲۱-۴۴۶۹۹۰۱۶</p>
-          <p class="mb-1"><strong>آدرس:</strong> شهرک اکباتان، فاز ۱</p>
+          <p class="mb-1"><strong>تلفن:</strong></p>
+          <p class="mb-1"><strong>آدرس:</strong></p>
         </div>
       </div>
     </div>
@@ -162,7 +162,7 @@
         <div class="modal-body p-0">
           <div class="row g-0">
             <div class="col-md-6">
-              <img id="modalImg" src="" alt="تصویر کالا" style="width:100%;height:100%;object-fit:cover;">
+              <img id="modalImg" src="./img/ejcgzk.png" alt="تصویر کالا" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="col-md-6 p-3">
               <h5 id="modalTitle"></h5>
@@ -182,7 +182,9 @@
   </div>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    -->
+  <script src="./bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
