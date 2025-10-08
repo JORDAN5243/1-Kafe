@@ -4,20 +4,34 @@
   --brown-medium: #6b4b3a;
   --cream: #f6efe6;
   --accent: #d7a86e;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 8px 24px rgba(34,34,34,0.12);
+  --shadow-lg: 0 14px 30px rgba(0,0,0,0.4);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --transition: all 0.3s cubic-bezier(0.22, 0.9, 0.3, 1);
 }
 
 * {
   box-sizing: border-box;
 }
+
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
+  max-width: 100%;
+  scroll-behavior: smooth;
 }
+
 body {
   font-family: var(--main-font);
   background: linear-gradient(180deg, #fff 0%, #f6f2ef 100%);
   color: #222;
   -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
 }
 
 /* Header */
@@ -28,6 +42,7 @@ body {
   top: 0;
   z-index: 1040;
 }
+
 .logo {
   width: 56px;
   height: 56px;
@@ -40,28 +55,34 @@ body {
   background: linear-gradient(90deg, #321f17, #2b1914);
   padding-bottom: 28px;
 }
+
 .categories-swiper {
   padding: 12px 0;
   overflow: visible;
 }
+
 .categories-swiper .swiper-slide {
   width: 120px;
   height: 120px;
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.28s ease, box-shadow 0.28s;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
   background: linear-gradient(180deg, #fff0, #0000);
+  will-change: transform;
+  backface-visibility: hidden;
 }
+
 .categories-swiper .swiper-slide .c-inner {
   text-align: center;
   color: #fff;
 }
+
 .categories-swiper .swiper-slide.active {
   transform: translateY(-8px) scale(1.08);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Swiper items coverflow */
@@ -69,33 +90,54 @@ body {
   width: 100%;
   padding: 36px 0 24px;
 }
+
 .swiper .swiper-slide {
   background: var(--cream);
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   height: 320px;
-  box-shadow: 0 8px 24px rgba(34, 34, 34, 0.12);
-  transition: transform 0.35s cubic-bezier(0.22, 0.9, 0.3, 1), opacity 0.25s;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  will-change: transform;
+  backface-visibility: hidden;
 }
+
 .swiper .swiper-slide .item-img {
   height: 60%;
   width: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
+
 .swiper .swiper-slide .item-body {
   padding: 12px;
 }
+
 .swiper-button-next,
 .swiper-button-prev {
   color: var(--brown-dark);
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+  filter: drop-shadow(var(--shadow-sm));
 }
 
 /* Grid fallback */
+.card {
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  will-change: transform;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
 .card .card-img-top {
   height: 180px;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
+
 .bg-brown {
   background: linear-gradient(90deg, #3b2a21, #2e231c);
 }
@@ -109,25 +151,140 @@ body {
   max-width: 95%;
   height: calc(100vh - 110px);
   transform: translateX(110%);
-  transition: transform 0.28s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1080;
-  border-radius: 12px 0 0 12px;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
   overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--cream);
 }
+
+.cart-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cart-sidebar::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+.cart-sidebar::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+
 .cart-sidebar.open {
   transform: translateX(0);
 }
 
 /* Buttons */
+.btn {
+  transition: var(--transition);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .btn-warning {
   background: var(--accent);
   border-color: var(--accent);
   color: #2b1a12;
 }
+
 .btn-primary {
   background: var(--brown-medium);
   border-color: var(--brown-medium);
+  color: white;
 }
+
+/* Form controls */
+.form-control:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Loading states برای تصاویر */
+.item-img,
+.card-img-top {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.item-img.loaded,
+.card-img-top.loaded {
+  background: none;
+  animation: none;
+}
+
+/* Hover effects */
+.item-img:hover,
+.card-img-top:hover {
+  transform: scale(1.05);
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+small, .text-muted {
+  line-height: 1.4;
+  color: #6c757d !important;
+}
+
+/* استایل جستجو */
+#searchInput {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.input-group-text {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  background: var(--cream);
+  border: 1px solid #ced4da;
+}
+
+/* بدج برای دسته‌بندی */
+.badge.bg-brown {
+  background: linear-gradient(45deg, var(--brown-medium), var(--brown-dark)) !important;
+  font-size: 11px;
+  padding: 4px 8px;
+}
+
+/* کاهش motion برای کاربران حساس */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* مشکلات رسپانسیو - رفع */
 @media (max-width: 768px) {
   /* هدر - بهبود نمایش در موبایل */
@@ -175,7 +332,7 @@ body {
   .btn-sm {
     padding: 8px 12px !important;
     font-size: 14px !important;
-    min-height: 44px; /* برای لمس بهتر */
+    min-height: 44px;
   }
 
   /* سایدبار سبد خرید - تمام صفحه در موبایل */
@@ -234,6 +391,38 @@ body {
   }
 }
 
+/* تبلت - بین موبایل و دسکتاپ */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .categories-swiper .swiper-slide {
+    width: 140px !important;
+    height: 140px !important;
+  }
+  
+  .swiper .swiper-slide {
+    height: 350px !important;
+  }
+  
+  .cart-sidebar {
+    width: 400px !important;
+  }
+}
+
+/* بهبود نمایش landscape موبایل */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    padding-bottom: 16px !important;
+  }
+  
+  .categories-swiper .swiper-slide {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  .swiper .swiper-slide {
+    min-height: 200px !important;
+  }
+}
+
 /* بهبودهای اضافی برای صفحه‌های بسیار کوچک */
 @media (max-width: 480px) {
   .container,
@@ -265,13 +454,6 @@ body {
     width: 44px !important;
     height: 44px !important;
   }
-}
-
-/* جلوگیری از horizontal scroll */
-html,
-body {
-  overflow-x: hidden;
-  max-width: 100%;
 }
 
 /* بهبود نمایش grid در موبایل */
@@ -306,6 +488,7 @@ body {
     height: calc(100vh - 70px);
   }
 }
+
 @media (max-width: 991px) {
   .hero .container {
     padding-left: 0;

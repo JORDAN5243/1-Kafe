@@ -1,191 +1,250 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>منوی کافه — نسخهٔ شبیه‌سازی</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>منوی کافه — نسخهٔ شبیه‌سازی</title>
 
-  <!-- Bootstrap RTL (CDN) -->
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet"> -->
-<link rel="stylesheet" href="./bootstrap-5.3.8-dist/css/bootstrap.rtl.min.css">
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap RTL (CDN) -->
+    <link
+      rel="stylesheet"
+      href="./bootstrap-5.3.8-dist/css/bootstrap.rtl.min.css"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 
-  <!-- Swiper (for carousel / coverflow) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- Swiper (for carousel / coverflow) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
 
-  <!-- Vazirmatn font (Google Fonts) -->
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Vazirmatn font (Google Fonts) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body class="mobile-fix">
-  <!-- Header -->
-  <header class="app-header bg-dark text-light">
-    <div class="container d-flex align-items-center justify-content-between py-2">
-      <div class="d-flex align-items-center gap-3">
-        <img src="https://via.placeholder.com/64x64?text=Logo" alt="لوگو" class="logo">
-        <div>
-          <h1 class="h5 mb-0">کافه — منو</h1>
-          <small class="text-muted">انتخاب و سفارش آنلاین</small>
-        </div>
-      </div>
-
-      <div class="d-flex align-items-center gap-2 flex-wrap">
-        <button id="cartBtn" class="btn btn-outline-light position-relative">
-          <i class="bi bi-cart3"></i>
-          <span class="d-none d-md-inline">سبد</span>
-          <span id="cartCount" class="badge bg-danger position-absolute top-0 start-0 translate-middle">0</span>
-        </button>
-        <a href="#contact" class="btn btn-warning text-dark">سفارش / تماس</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero / Carousel categories -->
-  <section class="hero bg-brown py-3">
-    <div class="container-fluid px-0">
-      <div class="swiper-container categories-swiper">
-        <div class="swiper-wrapper" id="categoriesWrapper">
-          <!-- دسته‌ها توسط JS اضافه می‌شوند -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main content -->
-  <main class="container my-4">
-    <div class="row">
-      <!-- Left: filter (mobile hidden on very small screens) -->
-      <aside class="col-12 col-lg-3 mb-4 order-2 order-lg-1">
-        <div class="card bg-cream sticky-top" style="top:20px;">
-          <div class="card-body">
-            <h5 class="card-title">فیلتر</h5>
-            <ul class="list-group list-group-flush" id="categoryList">
-              <!-- توسط JS -->
-            </ul>
-          </div>
-        </div>
-      </aside>
-
-      <!-- Right: items -->
-      <section class="col-lg-9">
-        <div class="d-flex justify-content-between align-items-center mb-3">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="mobile-fix">
+    <!-- Header -->
+    <header class="app-header bg-dark text-light">
+      <div
+        class="container d-flex align-items-center justify-content-between py-2"
+      >
+        <div class="d-flex align-items-center gap-3">
+          <img
+            src="https://via.placeholder.com/64x64?text=Logo"
+            alt="لوگو"
+            class="logo"
+          />
           <div>
-            <h2 class="h4 mb-0">آیتم‌ها</h2>
-            <small class="text-muted">برای دیدن جزئیات روی عکس‌ها کلیک کنید</small>
-          </div>
-          <div class="d-flex gap-2 align-items-center">
-            <select id="sortSelect" class="form-select form-select-sm">
-              <option value="default">مرتب‌سازی: پیش‌فرض</option>
-              <option value="price-asc">قیمت: کم → زیاد</option>
-              <option value="price-desc">قیمت: زیاد → کم</option>
-            </select>
+            <h1 class="h5 mb-0">کافه — منو</h1>
+            <small class="text-muted">انتخاب و سفارش آنلاین</small>
           </div>
         </div>
 
-        <!-- Swiper carousel for items (coverflow) -->
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper" id="itemsWrapper">
-            <!-- کارت‌ها توسط JS -->
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <button id="cartBtn" class="btn btn-outline-light position-relative">
+            <i class="bi bi-cart3"></i>
+            <span class="d-none d-md-inline">سبد</span>
+            <span
+              id="cartCount"
+              class="badge bg-danger position-absolute top-0 start-0 translate-middle"
+              >0</span
+            >
+          </button>
+          <a href="#contact" class="btn btn-warning text-dark">سفارش / تماس</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero / Carousel categories -->
+    <section class="hero bg-brown py-3">
+      <div class="container-fluid px-0">
+        <div class="swiper-container categories-swiper">
+          <div class="swiper-wrapper" id="categoriesWrapper">
+            <!-- دسته‌ها توسط JS اضافه می‌شوند -->
           </div>
-          <!-- pagination / navigation -->
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
         </div>
+      </div>
+    </section>
 
-        <!-- Grid fallback (for larger screens below carousel) -->
-        <div id="menuGrid" class="row g-3 mt-4 d-none d-lg-flex">
-          <!-- کارت‌های شبکه‌ای توسط JS -->
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <!-- Contact / Order form -->
-  <section id="contact" class="bg-light py-4 border-top">
-    <div class="container">
+    <!-- Main content -->
+    <main class="container my-4">
       <div class="row">
-        <div class="col-lg-6 mb-3">
-          <h3 class="h5">فرم سفارش / تماس</h3>
-          <form id="orderForm">
-            <div class="mb-2">
-              <label class="form-label">نام</label>
-              <input type="text" id="name" class="form-control" required>
+        <!-- Left: filter (mobile hidden on very small screens) -->
+        <aside class="col-12 col-lg-3 mb-4 order-2 order-lg-1">
+          <div class="card bg-cream sticky-top" style="top: 20px">
+            <div class="card-body">
+              <h5 class="card-title">فیلتر</h5>
+              <ul class="list-group list-group-flush" id="categoryList">
+                <!-- توسط JS -->
+              </ul>
             </div>
-            <div class="mb-2">
-              <label class="form-label">تلفن</label>
-              <input type="tel" id="phone" class="form-control" required>
-            </div>
-            <div class="mb-2">
-              <label class="form-label">آدرس</label>
-              <textarea id="address" class="form-control" rows="2"></textarea>
-            </div>
-            <button class="btn btn-primary" type="submit">ارسال سفارش</button>
-          </form>
-        </div>
+          </div>
+        </aside>
 
-        <div class="col-lg-6">
-          <h3 class="h5">اطلاعات تماس</h3>
-          <p class="mb-1"><strong>تلفن:</strong></p>
-          <p class="mb-1"><strong>آدرس:</strong></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cart sidebar -->
-  <div id="cartSidebar" class="cart-sidebar bg-white shadow-lg">
-    <div class="p-3 d-flex justify-content-between align-items-center border-bottom">
-      <strong>سبد سفارش</strong>
-      <button id="closeCart" class="btn btn-sm btn-outline-secondary">&times;</button>
-    </div>
-    <div class="p-3" id="cartItems">
-      <p class="text-muted">هیچ موردی اضافه نشده است.</p>
-    </div>
-    <div class="p-3 border-top">
-      <div class="d-flex justify-content-between">
-        <strong>جمع</strong>
-        <strong id="cartTotal">۰ تومان</strong>
-      </div>
-      <div class="mt-3">
-        <button id="checkoutBtn" class="btn btn-success w-100">ادامه</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Item modal -->
-  <div class="modal fade" id="itemModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-body p-0">
-          <div class="row g-0">
-            <div class="col-md-6">
-              <img id="modalImg" src="./img/ejcgzk.png" alt="تصویر کالا" style="width:100%;height:100%;object-fit:cover;">
+        <!-- Right: items -->
+        <section class="col-lg-9">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <h2 class="h4 mb-0">آیتم‌ها</h2>
+              <small class="text-muted"
+                >برای دیدن جزئیات روی عکس‌ها کلیک کنید</small
+              >
             </div>
-            <div class="col-md-6 p-3">
-              <h5 id="modalTitle"></h5>
-              <p id="modalDesc" class="text-muted small"></p>
-              <div class="mb-3">
-                <strong id="modalPrice"></strong>
+            <div class="d-flex gap-2 align-items-center">
+              <select id="sortSelect" class="form-select form-select-sm">
+                <option value="default">مرتب‌سازی: پیش‌فرض</option>
+                <option value="price-asc">قیمت: کم → زیاد</option>
+                <option value="price-desc">قیمت: زیاد → کم</option>
+              </select>
+            </div>
+          </div>
+          <div class="d-flex gap-2 align-items-center mb-3">
+            <div class="flex-grow-1 position-relative">
+              <div class="input-group input-group-sm">
+                <input
+                  type="text"
+                  id="searchInput"
+                  class="form-control"
+                  placeholder="جست‌وجو در منو..."
+                />
+                <!-- دکمه جست‌وجو اصلی -->
+                <button class="btn btn-primary" type="button" id="searchBtn">
+                  <i class="bi bi-search"></i>جست‌وجو
+                </button>
+                <!-- دکمه پاک کردن -->
+                <button
+                  id="clearSearch"
+                  class="btn btn-outline-secondary d-none"
+                  type="button"
+                >
+                  <i class="bi bi-x"></i>
+                </button>
               </div>
-              <div class="d-flex gap-2">
-                <button id="modalAdd" class="btn btn-primary">افزودن</button>
-                <button class="btn btn-outline-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+          </div>
+
+          <!-- Swiper carousel for items (coverflow) -->
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper" id="itemsWrapper">
+              <!-- کارت‌ها توسط JS -->
+            </div>
+            <!-- pagination / navigation -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+
+          <!-- Grid fallback (for larger screens below carousel) -->
+          <div id="menuGrid" class="row g-3 mt-4 d-none d-lg-flex">
+            <!-- کارت‌های شبکه‌ای توسط JS -->
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Contact / Order form -->
+    <section id="contact" class="bg-light py-4 border-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-3">
+            <h3 class="h5">فرم سفارش / تماس</h3>
+            <form id="orderForm">
+              <div class="mb-2">
+                <label class="form-label">نام</label>
+                <input type="text" id="name" class="form-control" required />
+              </div>
+              <div class="mb-2">
+                <label class="form-label">تلفن</label>
+                <input type="tel" id="phone" class="form-control" required />
+              </div>
+              <div class="mb-2">
+                <label class="form-label">آدرس</label>
+                <textarea id="address" class="form-control" rows="2"></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">ارسال سفارش</button>
+            </form>
+          </div>
+
+          <div class="col-lg-6">
+            <h3 class="h5">اطلاعات تماس</h3>
+            <p class="mb-1"><strong>تلفن:</strong></p>
+            <p class="mb-1"><strong>آدرس:</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cart sidebar -->
+    <div id="cartSidebar" class="cart-sidebar bg-white shadow-lg">
+      <div
+        class="p-3 d-flex justify-content-between align-items-center border-bottom"
+      >
+        <strong>سبد سفارش</strong>
+        <button id="closeCart" class="btn btn-sm btn-outline-secondary">
+          &times;
+        </button>
+      </div>
+      <div class="p-3" id="cartItems">
+        <p class="text-muted">هیچ موردی اضافه نشده است.</p>
+      </div>
+      <div class="p-3 border-top">
+        <div class="d-flex justify-content-between">
+          <strong>جمع</strong>
+          <strong id="cartTotal">۰ تومان</strong>
+        </div>
+        <div class="mt-3">
+          <button id="checkoutBtn" class="btn btn-success w-100">ادامه</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item modal -->
+    <div class="modal fade" id="itemModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="row g-0">
+              <div class="col-md-6">
+                <img
+                  id="modalImg"
+                  src="./img/ejcgzk.png"
+                  alt="تصویر کالا"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                />
+              </div>
+              <div class="col-md-6 p-3">
+                <h5 id="modalTitle"></h5>
+                <p id="modalDesc" class="text-muted small"></p>
+                <div class="mb-3">
+                  <strong id="modalPrice"></strong>
+                </div>
+                <div class="d-flex gap-2">
+                  <button id="modalAdd" class="btn btn-primary">افزودن</button>
+                  <button
+                    class="btn btn-outline-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    بستن
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Scripts -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    -->
-  <script src="./bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-  <script src="script.js"></script>
-</body>
+    <!-- Scripts -->
+    <script src="./bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
