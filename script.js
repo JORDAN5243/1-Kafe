@@ -332,13 +332,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // category swiper: small slides
     categorySwiper = new Swiper(".categories-swiper", {
       slidesPerView: "auto",
-      centeredSlides: true,
+      centeredSlides: false,
       spaceBetween: 12,
       grabCursor: true,
     });
 
     // items swiper: coverflow
     window.itemsSwiper = new Swiper(".mySwiper", {
+      resistanceRatio: 0.85,
       effect: "coverflow",
       grabCursor: true,
       centeredSlides: true,
@@ -351,18 +352,23 @@ document.addEventListener("DOMContentLoaded", () => {
         modifier: 1,
         slideShadows: false,
       },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
+      pagination: { el: ".swiper-pagination", clickable: true },
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
       breakpoints: {
-        0: { slidesPerView: 1.1 },
+        0: { slidesPerView: 1, centeredSlides: true },
+        576: { slidesPerView: 1.3, centeredSlides: true },
         768: { slidesPerView: 1.6 },
         1200: { slidesPerView: 2.2 },
+      },
+      on: {
+        init: () => {
+          document.querySelectorAll(".swiper-slide").forEach((slide) => {
+            slide.style.height = "auto";
+          });
+        },
       },
     });
 
